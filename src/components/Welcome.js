@@ -62,7 +62,7 @@ const Welcome = () =>{
                     <div className="h-[1px] w-full bg-gray-400 my-2" />
                 </div> */}
 
-
+                    <p></p>
             </div>
           </div>
         </div>

@@ -9,7 +9,7 @@ function App() {
       <Navbar/>
       <Welcome/>
       </div>
-      
+           
       <NFTs/>
       <Transactions/>
       <Footer/>
