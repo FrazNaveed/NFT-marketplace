@@ -1,6 +1,7 @@
-import { BsShieldFillCheck  } from "react-icons/bs";
-import {BiSearchAlt} from 'react-icons/bi';
-import {RiHeart2Fill} from 'react-icons/ri';
+import { FaReact  } from "react-icons/fa";
+import {SiIpfs} from 'react-icons/si';
+import {SiWeb3Dotjs} from 'react-icons/si';
+import {FaEthereum} from 'react-icons/fa';
 
 
 
@@ -25,9 +26,9 @@ const NFTs = () =>{
             <div className="flex flex-col items-center justify-between py-12 px-4">
                 <div className="flex-1 flex flex-col justify-start items-start">
                     <h1 className="text-white text-3xl">
-                        Services that we
+                        This website has
                     <br/>
-                     continue to imporve 
+                     been made with: 
                     </h1>        
                 </div>
             </div>
@@ -36,25 +37,33 @@ const NFTs = () =>{
 
                 <div className="flex-1 flex flex-col justify-start items-center">
                     <ServiceCard
-                    color="bg-[#2952E3]"
-                    title="Security Guaranteed"
-                    icon={<BsShieldFillCheck fontSize={21} className="text-white"/>}
+                    color="bg-[#757B93]"
+                    title="Ethereum"
+                    icon={<FaEthereum fontSize={21} className="text-white"/>}
                     subtitle="Security is Guaranteed. We always mainting the quality blah blah blah "
                     />
+ 
+                    <ServiceCard
+                    color="bg-[#E4820D]"
+                    title="Web3.js"
+                    icon={<SiWeb3Dotjs fontSize={21} className="text-white"/>}
+                    subtitle="Security is Guaranteed. We always mainting the quality blah blah blah "
+                    />  
 
-                     <ServiceCard
+                    <ServiceCard
                     color="bg-[#8945F8]"
-                    title="Security Guaranteed"
-                    icon={<BiSearchAlt fontSize={21} className="text-white"/>}
+                    title="IPFS"
+                    icon={<SiIpfs fontSize={21} className="text-white"/>}
                     subtitle="Security is Guaranteed. We always mainting the quality blah blah blah "
                     />
 
-                     <ServiceCard
-                    color="bg-[#dc2626]"
-                    title="Security Guaranteed"
-                    icon={<RiHeart2Fill fontSize={21} className="text-white"/>}
+                    <ServiceCard
+                    color="bg-[#2952E3]"
+                    title="React.js"
+                    icon={<FaReact fontSize={21} className="text-white"/>}
                     subtitle="Security is Guaranteed. We always mainting the quality blah blah blah "
                     />
+
                 </div>
         </div>
     );
