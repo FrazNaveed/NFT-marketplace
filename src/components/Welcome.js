@@ -7,7 +7,7 @@ import abi from '../ethereum/contractAbi.json';
 const Welcome = () =>{
     const [walletAddress, setWalletAddress] = useState("");
     const [counter, setCounter] =  useState(1);
-
+    const contractAddress = "0xe22ea6eB595ba760B2e42A7879FA0E48f7e2b334";
     const isWalletConnected = () =>{
 
         if (!window.ethereum) {
@@ -41,15 +41,14 @@ const Welcome = () =>{
             if(ethereum){
                 const provider  = new ethers.providers.Web3Provider(ethereum);
                 const signer  = provider.getSigner();
-                const contract = new ethers.Contract(walletAddress, abi, signer);
+                const contract = new ethers.Contract(contractAddress, abi, signer);
 
                 console.log("Initialize payment");
-                let txn = await contract.mint(walletAddress , counter, {value: ethers.utils.parseEther("0.01")});
-                setCounter++;
-                
+                let txn = await contract.mint(walletAddress , counter,"hello", 10 , {value: ethers.utils.parseEther("0.01")});
+               
                 console.log("Minting your NFT");
                 await txn.wait();
-
+                setCounter(counter+1);
                 console.log(`See Transaction: https://ropsten.etherscan.io/tx/${txn.hash}`);
 
             }else{
