@@ -35,33 +35,33 @@ const NFTs = () =>{
 
                 {/* Using Card components */}
 
-                <div className="flex-1 flex flex-col justify-start items-center">
+                <div className=" flex-col static justify-start items-center">
                     <ServiceCard
                     color="bg-[#757B93]"
                     title="Ethereum"
                     icon={<FaEthereum fontSize={21} className="text-white"/>}
-                    subtitle="Security is Guaranteed. We always mainting the quality blah blah blah "
+                    subtitle="The core of the website are smart contracts. "
                     />
  
                     <ServiceCard
                     color="bg-[#E4820D]"
                     title="Web3.js"
                     icon={<SiWeb3Dotjs fontSize={21} className="text-white"/>}
-                    subtitle="Security is Guaranteed. We always mainting the quality blah blah blah "
+                    subtitle="Web3.0 helps with the interaction with blockchain."
                     />  
 
                     <ServiceCard
                     color="bg-[#8945F8]"
                     title="IPFS"
                     icon={<SiIpfs fontSize={21} className="text-white"/>}
-                    subtitle="Security is Guaranteed. We always mainting the quality blah blah blah "
+                    subtitle="IPFS is used for dumping of digital assets. "
                     />
 
                     <ServiceCard
                     color="bg-[#2952E3]"
                     title="React.js"
                     icon={<FaReact fontSize={21} className="text-white"/>}
-                    subtitle="Security is Guaranteed. We always mainting the quality blah blah blah "
+                    subtitle="The website you are seeing is made with it. "
                     />
 
                 </div>

@@ -1,4 +1,4 @@
-import logo from "../images/logo.png";
+import logo from "../images/newlogo.png";
 
 const NavbarItems = ({ title, classProps }) => {
   return <li className={`mx-4 cursor-pointer ${classProps}`}>{title}</li>;

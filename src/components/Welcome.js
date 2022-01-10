@@ -96,7 +96,7 @@ const Welcome = () => {
         className="bg-[#2595e3] py-2 px-7 mx-4 rounded-full cursor-pointer hover:bg-[#2546bd]">
         <p className="text-white text-base font-semibold">Mint</p>
       </button>
-       <input type="file" onChange={onChange} className="flex  rounded-full my-2 text-white"/>
+       <input type="file" onChange={onChange} className="flex rounded-full my-2 text-white"/>
        </>
     );
   };
