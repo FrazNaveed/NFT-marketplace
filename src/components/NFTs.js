@@ -2,6 +2,8 @@ import { BsShieldFillCheck  } from "react-icons/bs";
 import {BiSearchAlt} from 'react-icons/bi';
 import {RiHeart2Fill} from 'react-icons/ri';
 
+
+
 // we will use cards to tell what techs our marketplace is using
 
 const ServiceCard = ({color, title, icon , subtitle}) =>(

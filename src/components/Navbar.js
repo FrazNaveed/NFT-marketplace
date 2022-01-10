@@ -12,9 +12,9 @@ const Navbar = () => {
       </div>
 
       <ul className="text-white md:flex  list-none flex-row justify-between items-center flex-initial">
-      <li className="bg-[#2952e3] py-2 px-7 mx-4 rounded-full cursor-pointer hover:bg-[#2546bd]">
+      {/* <li className="bg-[#2952e3] py-2 px-7 mx-4 rounded-full cursor-pointer hover:bg-[#2546bd]">
           Mint
-        </li>
+        </li> */}
 
         {["Markets", "Exchanges", "Tutorials", "Wallets"].map((item, index) => (
           <NavbarItems

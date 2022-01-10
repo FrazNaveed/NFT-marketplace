@@ -1,25 +1,88 @@
 import { useEffect, useState } from 'react';
 import {SiEthereum} from 'react-icons/si';
 import {BsInfoCircle} from 'react-icons/bs';
-
-
+import {ethers} from 'ethers';
+import abi from '../ethereum/contractAbi.json';
 
 const Welcome = () =>{
     const [walletAddress, setWalletAddress] = useState("");
+    const [counter, setCounter] =  useState(1);
 
-    useEffect(async () => {
+    const isWalletConnected = () =>{
 
-        setTimeout(async () => {
-          if (!window.ethereum) {
+        if (!window.ethereum) {
             return;
           }
-          let address = await window.ethereum.selectedAddress;
+          let address = window.ethereum.selectedAddress;
           window.ethereum.on("accountsChanged", () => {
             window.location.reload();
           });
           setWalletAddress(address ? address.toString() : "");
  
+    }
+    const connectWalletHandler = async() =>{
+        const {ethereum} = window;
+
+        if(!ethereum){
+            alert("Install metamask");
+        }
+        try{
+            const accounts = await ethereum.request({method: 'eth_requestAccounts'});
+            setWalletAddress(accounts[0]);
+        }catch(err){
+            console.log(err);
+        }
+    }
+
+    const mintNFTHandler = async() => {
+        try{
+            const {ethereum} =  window;
+        
+            if(ethereum){
+                const provider  = new ethers.providers.Web3Provider(ethereum);
+                const signer  = provider.getSigner();
+                const contract = new ethers.Contract(walletAddress, abi, signer);
+
+                console.log("Initialize payment");
+                let txn = await contract.mint(walletAddress , counter, {value: ethers.utils.parseEther("0.01")});
+                setCounter++;
+                
+                console.log("Minting your NFT");
+                await txn.wait();
+
+                console.log(`See Transaction: https://ropsten.etherscan.io/tx/${txn.hash}`);
+
+            }else{
+                console.log("Ethereum Wallet does not exist");
+            }
+
+        } catch(err){
+            console.log(err);
+        }
+    }
+    const connectWallet = () =>{
+        return(
+            <button type="button" onClick={connectWalletHandler} className="flex flex-row justify-center my-5 bg-[#2595e3] p-3 rounded-full cursor-pointer hover:bg-[#2546bd]"> 
+            <p className="text-white text-base font-semibold">
+            Connect Wallet
+            </p>
+        </button> 
+        );
+    }
+    const mintNFTButton = () =>{
+        return(
+        <button onClick={mintNFTHandler} className="bg-[#2595e3] py-2 px-7 mx-4 rounded-full cursor-pointer hover:bg-[#2546bd]">
+          Mint
+        </button>
+        );
+    }
+
+    useEffect(async () => {
+        setTimeout(async () => {
+            console.log(walletAddress);
+            isWalletConnected();
         }, 1000);
+       
       }, [walletAddress]);
 
     return(
@@ -37,13 +100,9 @@ const Welcome = () =>{
                     Explore the Crypto World.
                     Buy and Sell easily on Krypto. 
                 </p>
-                
-                    {/* oncClick={connectWallet} */}
-                {/* <button type="button"  className="flex flex-row justify-center my-5 bg-[#2595e3] p-3 rounded-full cursor-pointer hover:bg-[#2546bd]"> 
-                    <p className="text-white text-base font-semibold">
-                    Connect Wallet
-                    </p>
-                </button> */}
+                    
+                    {walletAddress ? mintNFTButton() : connectWallet()}
+
             </div>
 
             <div className="flex flex-col flex-1 item-center justify-start w-full mt-10">
